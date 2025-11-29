@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "otp.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "rewrites": [
+    {
+      "src": "/(.*)",
+      "dest": "/otp.py"
+    }
+  ]
+}
