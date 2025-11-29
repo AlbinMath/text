@@ -8,8 +8,8 @@
   ],
   "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/otp.py"
+      "source": "/(.*)",
+      "destination": "/otp.py"
     }
   ]
 }
