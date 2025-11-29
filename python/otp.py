@@ -1,12 +1,17 @@
-from flask import Flask, jsonify
+# python/api/otp.py
+from http.server import BaseHTTPRequestHandler
+import json
 import random
 
-app = Flask(__name__)
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        # generate 6-digit OTP
+        otp = random.randint(100000, 999999)
 
-@app.route("/otp", methods=["GET"])
-def get_otp():
-    otp = random.randint(100000, 999999)  # 6-digit OTP
-    return jsonify({"otp": otp})
+        body = json.dumps({"otp": otp})
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001)
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+        self.wfile.write(body.encode("utf-8"))
+        return
